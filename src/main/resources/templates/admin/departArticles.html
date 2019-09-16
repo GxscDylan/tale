@@ -161,13 +161,13 @@
             deleteArticle: function (cid) {
                 var $vm = this;
                 tale.alertConfirm({
-                    title: '确定删除该文章吗?',
+                    title: '确定删除该周报吗?',
                     then: function () {
                         tale.post({
                             url: '/admin/api/article/delete/' + cid,
                             success: function (result) {
                                 if (result && result.success) {
-                                    tale.alertOk('文章删除成功');
+                                    tale.alertOk('周报删除成功');
                                     $vm.load(1);
                                 } else {
                                     tale.alertError(result.msg || '文章删除失败');
