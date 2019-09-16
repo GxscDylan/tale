@@ -14,6 +14,34 @@ CREATE TABLE t_attach (id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, fname VARC
 DROP TABLE IF EXISTS t_comments;
 CREATE TABLE t_comments (coid INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, cid INTEGER DEFAULT (0) NOT NULL, created INTEGER (10) NOT NULL, author VARCHAR (200) NOT NULL, author_id INTEGER (10) DEFAULT (0), owner_id INTEGER (10) DEFAULT (0), mail VARCHAR (200) NOT NULL, url VARCHAR (200), ip VARCHAR (64), agent VARCHAR (200), content TEXT NOT NULL, type VARCHAR (16), status VARCHAR (16), parent INTEGER (10) DEFAULT (0));
 
+-- Table structure for t_departContents
+-- ----------------------------
+DROP TABLE IF EXISTS "t_departContents";
+CREATE TABLE "t_departContents" (
+                                    "cid" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+                                    "title" VARCHAR (255),
+                                    "slug" VARCHAR (255),
+                                    "thumb_img" VARCHAR(255),
+                                    "created" INTEGER (10) NOT NULL,
+                                    "modified" INTEGER (10),
+                                    "content_id" VARCHAR,
+                                    "author_id" INTEGER (10) NOT NULL,
+                                    "type" VARCHAR (16),
+                                    "status" VARCHAR (16) NOT NULL,
+                                    "fmt_type" VARCHAR (16) DEFAULT ('markdown'),
+                                    "tags" VARCHAR (200),
+                                    "categories" VARCHAR (200),
+                                    "hits" INTEGER (10) DEFAULT (0),
+                                    "comments_num" INTEGER (1) DEFAULT (0),
+                                    "allow_comment" INTEGER (1) DEFAULT (1),
+                                    "allow_ping" INTEGER (1),
+                                    "allow_feed" INTEGER (1),
+                                    "week_id" VARCHAR (12),
+                                    UNIQUE ("cid" ASC),
+                                    CONSTRAINT "idx_u_slug" UNIQUE ("slug" ASC)
+);
+
+
 -- 表：t_contents
 DROP TABLE IF EXISTS t_contents;
 
